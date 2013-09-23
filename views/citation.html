@@ -1,0 +1,151 @@
+<section id="cite" >
+<div class="row">
+ <div class="six columns">
+ 	<a  href="#/search" >Search</a>
+ </div>
+ <div class="six columns text-right">
+	<p>MLA style citation</p>
+ </div>
+</div>
+
+<div class="row">
+ <div class="twelve columns citation-box">
+    <p>
+    	<span data-ng-repeat="author in selectedWork.authorList">{{author.formattedName}}</span>
+    	<span ng-hide="isBlank(selectedWork.fullTitle)">. <em>{{selectedWork.fullTitle}}</em>.</span>
+    	<span ng-hide="isBlank(selectedWork.publisherCity)">{{selectedWork.publisherCity}}:</span>
+    	<span ng-hide="isBlank(selectedWork.publisher)">{{selectedWork.publisher}},</span>
+    	<span ng-hide="isBlank(selectedWork.publishedDate)">{{selectedWork.publishedDate}}.</span>&nbsp;
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="five columns">
+    <div class="row">
+      <div class="twelve columns">
+        <h4>Book Title</h4>
+        <div class="row">
+        <ul class="twelve columns">
+            <li class="field"><input ng-model="selectedWork.fullTitle"  class="text input" type="text" placeholder="Book Title" value="{{selectedWork.fullTitle}}" /></li>
+          </ul>
+        </div>
+        <div class="row" style="display:none;">
+          <ul class="two columns">
+            <li class="field">Vol.</li>
+            <li class="field"><input class="text input" type="text" placeholder="Vol." /></li>
+          </ul>
+          <ul class="five columns">
+            <li class="field">Edition</li>
+            <li class="field"><input class="text input" type="text" placeholder="Edition" /></li>
+          </ul>
+          <ul class="five columns">
+            <li class="field">Series</li>
+            <li class="field"><input class="text input" type="text" placeholder="Series" /></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+<div class="row">
+  <div class="twelve columns">
+    <h4>Publication Information</h4>
+    <div class="row">
+      <ul class="five columns">
+        <li class="field">Publisher</li>
+        <li class="field"><input ng-model="selectedWork.publisher" class="text input" type="text" placeholder="Publisher" value="{{selectedWork.publisher}}"/></li>
+      </ul>
+      <ul class="five columns">
+        <li class="field">City</li>
+        <li class="field"><input ng-model="selectedWork.publisherCity" class="text input" type="text" placeholder="City" value="{{selectedWork.publisherCity}}" /></li>
+      </ul>
+      <ul class="two columns">
+        <li class="field">Year</li>
+        <li class="field"><input ng-model="selectedWork.publishedDate" class="text input" type="text" placeholder="Year" value="{{selectedWork.publishedDate}}" /></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<div class="row" style="display:none;">
+  <div class="twelve columns">
+    <h4>Are you citing...</h4>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="picker">
+          <select>
+            <option>Entire Work</option>
+            <option>Section of Work</option>
+          </select>
+        </div>
+      </div>
+    </div>
+     <div class="row">
+      <ul class="twelve columns">
+        <li class="field">Chapter/Section Title</li>
+        <li class="field"><input class="text input" type="text" placeholder="Chapter/Section Title" /></li>
+      </ul>
+    </div>
+    <div class="row">
+      <ul class="four columns">
+        <li class="field">Start</li>
+        <li class="field"><input class="text input" type="text" placeholder="Start" /></li>
+      </ul>
+      <ul class="four columns">
+        <li class="field">End</li>
+        <li class="field"><input class="text input" type="text" placeholder="End" /></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+  </div>
+   <div class="seven columns">
+    <div class="row">
+      <div class="twelve columns">
+        <h4>Authors</h4>
+         <div class="row">
+         	<div class="five columns"><p><u>First Name</u></p></div>
+         	<div class="five columns"><p><u>Last Name</u></p></div>
+         	<div class="two columns"><p>&nbsp;</p></div>
+         </div>
+         <div class="row" data-ng-repeat="author in selectedWork.authorList">
+            <ul class="five columns">
+              <li class="field">{{author.firstName}}</li>
+            </ul>
+            <ul class="five columns">
+              <li class="field">{{author.lastName}}</li>
+            </ul>
+            <div class="two columns">
+              <div class="medium danger btn"> <a href ng-click="deleteAuthor($index)">&nbsp;&nbsp;X&nbsp;&nbsp;</a></div>
+            </div>
+
+         </div>
+          <div class="row" ng-show="!selectedWork.authorList.length">
+          	<div class="twelve columns">
+          		<p><em>There is currently no author.</em></p>
+          	</div>
+
+          </div>
+      </div>
+    </div>
+    <div class="row">
+	         <form ng-submit="addAuthor()">
+	     	<ul class="five columns">
+	        	<li class="field"><input class="text input" type="text" placeholder="First Name" ng-model="authorFirstName"  /></li>
+	        </ul>
+	        <ul class="five columns">
+	        	<li class="field"><input class="text input" type="text" placeholder="Last Name"  ng-model="authorLastName" /></li>
+	        </ul>
+	        <ul class="two columns">
+	          	<li class="field"><div class="medium primary btn"><input type="submit" value="Add" /></div></li>
+	        </ul>
+       	</form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+</section>

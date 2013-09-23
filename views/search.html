@@ -1,0 +1,33 @@
+ <section id="search">
+  <div class="row">
+   <ul class="twelve columns centered text-center">
+    <li class="append field">
+      <form ng-submit="addWorks()">
+      <input class="normal text input {{emptySearch}}" type="text" placeholder="Search for a book, article, etc..." data-ng-model="searchThis" />
+      <div class="medium primary btn"><input type="submit" value="Citation ho!" /></div>
+      </form>
+    </li>
+    <li>
+        <a href="#/citation">or create your own citation...</a>
+    </li>
+  </ul>
+  </div>
+
+<div id="search-results" class="row" style="display:none;">
+  <section class="twelve columns" >
+    <article class="valign row"  data-ng-repeat="work in works">
+      <div class="ten columns">
+        <h4>{{work.title}}</h4>
+        <h5>{{work.subtitle}}&nbsp;</h5>
+        <p> {{work.authorsConcatenated}} - {{work.publisher}} - {{work.publishedDate}}</p>
+      </div>
+        <div class="text-right two columns" style="padding-top: 0.273em;">
+         <div class="medium primary btn" > <a  href="#/citation" ng-click="citeThis($index)">Cite This</a></div>
+      </div>
+      <hr>
+    </article>
+    
+  </section>
+</div>
+
+</section>
